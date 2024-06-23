@@ -61,13 +61,12 @@ function gradeQuiz(candidateAnswers) {
 
 
  
- console.log("<< Candidate recieved a total of " + points  + ". >>");
+  console.log(">>> Overall Grade: " + grade + "% (" + points  + " of 5 responses correct) <<<");
 if (points === 0 || points === 1  || points === 2 || points === 3 ) {
-  console.log("<< Candidate recieved a grade of " + grade + "%. Candidate failed. >>");
+  console.log(">>> Status: FAILED <<<");
 
 } else { 
-    console.log("<< Candidate recieved a grade of " + grade + "%. Candidate passed! >>");
-
+    console.log(">>> Status: PASSED <<<");
 }
   return grade;
 }
