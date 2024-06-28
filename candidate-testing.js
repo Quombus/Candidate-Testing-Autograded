@@ -7,7 +7,7 @@ let candidateName = '';
 // TODO 1.2a: Define question, correctAnswer, and candidateAnswer //
 let question = "Who was the first American woman in space? ";
 let correctAnswer = "Sally Ride";
-let candidateAnswer = ' ';
+let candidateAnswer = '';
 
 //TODO: Variables for Part 2
 let questions = ["Who was the first American woman in space? " 
@@ -20,21 +20,12 @@ function askForName() {
    candidateName = input.question("Candidate Name: ");
 }
 function askQuestion() {
-  let prompt = [];
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
 
- let candidatePrompt = [];
-candidateAnswer = input.question(question);
- let correctAnswers1 = `Sally Ride, True, 40, Trajectory, 3`;
-
 for (let i = 0; i < questions.length; i++) {
-  candidatePrompt = input.question( (i + 1) + ') ' + questions[i] + " : ");
-
-  console.log("Candidate answer : " + candidatePrompt);
-  
-    let correctAnsFormat = correctAnswers1.split(', ');
-    console.log(`Correct answer : ${correctAnsFormat[i]}
-                                                         `); 
+  candidateAnswers.push(input.question( (i + 1) + ') ' + questions[i]));
+  console.log(" ");
+                                                          
 }
 }
 function gradeQuiz(candidateAnswers) {
@@ -42,21 +33,25 @@ let points = 0;
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly //
 
- let candidateAnsFormat = candidateAnswers.toString();
- let candidateAnsFormat2 = candidateAnsFormat.toUpperCase().trim();
- let candidateAnsFormat3 = candidateAnsFormat2.split(',');
- let correctAnsFormat = correctAnswers.toString();
- let correctAnsFormat2 = correctAnsFormat.toUpperCase().trim();
- let correctAnsFormat3 = correctAnsFormat2.split(',');
+
+
+  for (let i = 0; i < 5; i++)  { 
+
+  console.log( (i + 1) + ') ' + questions[i]);
+  console.log("Candidate answer : " + candidateAnswers[i]);
+  console.log("Correct answer : " + correctAnswers[i]);
+  console.log(" ");
+  }
+
+
 
   for (let i = 0; i < questions.length; i++) {
-      
-     if (candidateAnsFormat3[i] === correctAnsFormat3[i]) {
+     if (candidateAnswers[i].toUpperCase().trim() === correctAnswers[i].toUpperCase().trim()) {
       points = points + 1;
     }
  }
   let grade = (points * 2) * 10;  //TODO 3.2 use this variable to calculate the candidates score.
-  
+
   console.log(">>> Overall Grade: " + grade + "% (" + points  + " of 5 responses correct) <<<");
  if(grade < 80){
   console.log(">>> Status: FAILED <<<");
